@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-VM_ID = "vagrant"
-NUM_WORKER_NODES = 2
+VM_ID = "cks"
+NUM_WORKER_NODES = 1
 IP_NW = "192.168.11."
 IP_START=20
 
@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "#{VM_ID}-master" do |node|
     node.vm.provider "virtualbox" do |vb|
       vb.name = "#{VM_ID}-master"
-      vb.memory = 8192
+      vb.memory = 4096
       vb.cpus = 2
     end
     node.vm.hostname = "#{VM_ID}-master"
@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
     config.vm.define "#{VM_ID}-worker-#{i}" do |node|
       node.vm.provider "virtualbox" do |vb|
         vb.name = "#{VM_ID}-worker-#{i}"
-        vb.memory = 4096
+        vb.memory = 2048
         vb.cpus = 2
       end
       node.vm.hostname = "#{VM_ID}-worker-#{i}"
